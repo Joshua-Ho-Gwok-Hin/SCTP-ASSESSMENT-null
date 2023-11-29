@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travel With Us - Products</title>
+    <link rel="icon" type="image/x-icon" href="/images/artwork/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+<!-- add popup screen on click product image -->
+<div id="productModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Add content for the product details here -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <section class="row border border-primary-subtle p-2 mt-1 mx-2 rounded-3 bg-secondary-subtle">
+                            <h4 class="py-3 text-center">Product Images</h4>
+                            <div class="col-12 p-1 mb-2">
+                                <img id="productImage" class="img-fluid" alt="Product Image" style="height: 285px;">
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col">
+                        <section
+                                class="row border border-primary-subtle py-2 me-2 mb-2 mx-0 bg-secondary-subtle rounded-3">
+                            <h4 class="ps-2 mt-2 mb-4 py-3 text-center">Tour Package Product Details</h4>
+                            <div class="col-9 p-2 mb-3">
+                                <h6>Tour Product Title:</h6>
+                                <p id="productName"></p>
+                            </div>
+                            <div class="col-9 p-2 mb-3">
+                                <h6>Tour Category:</h6>
+                                <p id="productCategory"></p>
+                            </div>
+                            <div class="row mx-auto mb-3">
+                                <div class="col p-0">
+                                    <h6>Tour Price:</h6>
+                                    <p id="productPrice"></p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-12">
+                        <section
+                                class="row border border-primary-subtle py-2 me-2 mb-2 mt-1 ms-2 bg-secondary-subtle rounded-3">
+                            <h6>Tour Package Description:</h6>
+                            <p id="productDescription"></p>
+                        </section>
+                    </div>
+                    <!--Start of user submission form section-->
+                    <div class="container" style="text-align: center;">
+                        <h6>Kindly fill up form to express your interest and we will get back to you soonest!</h6>
+                        <form action="https://formsubmit.co/alphaallan@hotmail.com" method="POST"
+                              onsubmit="updateSubject();">
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <input type="hidden" id="productTitle" name="Product Title" value="Tour Name">
+                                    <input type="hidden" id="productCost" name="Product Price" value="Tour Price">
+                                    <div class="col-3" style="display: inline-block; margin-right: 10px;">
+                                        <input type="text" name="Customer Name" class="form-control"
+                                               placeholder="Full Name"
+                                               title="Please do not include special characters" required>
+                                    </div>
+                                    <div class="col-4" style="display: inline-block; margin-right: 10px;">
+                                        <input type="email" name="email" class="form-control"
+                                               placeholder="Email Address" required>
+                                    </div>
+                                    <div class="col-4" style="display: inline-block; margin-right: 10px;">
+                                        <input type="text" name="Customer Phone Number" class="form-control"
+                                               title="Please enter valid phone number without + and spacing"
+                                               placeholder="Phone Number"
+                                               pattern="[1-9][0-9]{5,7}" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                    <textarea class="col-11 mt-3 form-control" placeholder="Your Message" name="Message From Customer"
+                              title="Please do not include special characters" rows="5" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-dark mt-3">Submit Form</button>
+                            <!-- <input type="hidden" name="_captcha" value="false"> -->
+                            <input type="hidden" name="_subject" id="_subject" value="New Equiry!">
+                            <input type="hidden" name="_next" value="http://localhost:8080/products.html">
+                            <input type="hidden" name="_template" value="box">
+                            <input type="hidden" name="_autoresponse" value="Thank you for your enquiry">
+                        </form>
+                    </div>
+                    <!--End of user submission form section-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of pop up screen -->
+
+<!-- NAVIGATION BAR -->
+<div id="appendHeader"></div>
+<!-- END OF NAVIGATION BAR -->
+
+<main>
+
+
+    <div class="featuredtours">
+        <h2>All Tours</h2>
+    </div>
+<!--        <form class="bg-primary-subtle p-3">-->
+<!--            <section class="col-5 col-md-5 col-lg-3 pt-3">-->
+
+<!--            <div id="filterBar form-control" class="mb-3">-->
+<!--            <label for="categoryFilter" class="me-2 form-label">Filter by Category:</label>-->
+<!--            <select class="form-select" id="categoryFilter">-->
+<!--                <option value="all">All Categories</option>-->
+<!--                &lt;!&ndash; Add options dynamically based on available categories &ndash;&gt;-->
+<!--            </select>-->
+<!--&lt;!&ndash;            <button class="btn btn-dark mt-3 mb-4" onclick="filterProducts()">Apply Filter</button>&ndash;&gt;-->
+<!--            </div>-->
+<!--            </section>-->
+<!--            <button class="btn btn-dark mt-3 mb-4" onclick="filterProducts()">Apply Filter</button>-->
+
+<!--        </form>-->
+
+    <form class="bg-primary-subtle p-3">
+    <div class="mb-3">
+        <h3 class="mt-3">Browse Tours</h3>
+        <div class="row">
+            <section class="col-5 col-md-5 col-lg-5 pt-3">
+                <label for="categoryFilter" class="form-label">
+                    <h6>Tour destination:</h6>
+                </label>
+                <select class="form-select" id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <!-- Add options dynamically based on available categories -->
+                </select>
+            </section>
+            <section class="col-5 col-md-5 col-lg-5 pt-3">
+                <label for="price" class="form-label">
+                    <h6>Ideal Price Range:</h6>
+                </label>
+                <select class="form-select" id="price" aria-label="Default select example">
+                    <option selected>Select Price Range:</option>
+                    <option value="1">S$1,000 and below</option>
+                    <option value="2">S$1,001 to S$2,000</option>
+                    <option value="3">S$2,001 to S$3,000</option>
+                    <option value="3">S$3,001 to S$4,000</option>
+                    <option value="3">S$4,001 and more</option>
+                </select>
+            </section>
+
+
+            <div class="col-2 col-md-2 pe-2 pt-3">
+                <label for="search" class="form-label">
+                    <h6>Filter:</h6>
+                </label>
+                <button id="search" type="button" class="btn btn-primary form-control" onclick="filterProducts()"><i class="bi bi-search pe-1"></i>Search</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+    <div class="featuredtours">
+
+    <div id="productItems"></div>
+
+        <!-- adding card -->
+        <div id="list-products" class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- end of adding card -->
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER SITE MAP AND CONTACT US -->
+<footer id="footer" class="container-fluid"></footer>
+<!--END OF FOOTER-->
+
+<script src="/js/common/bootstrap.bundle.min.js"></script>
+<script src="/js/common/header.js"></script>
+<script src="/js/common/footer.js"></script>
+<script src="/js/itemsController.js"></script>
+<script src="/js/tours.js"></script>
+</body>
+
+</html>
